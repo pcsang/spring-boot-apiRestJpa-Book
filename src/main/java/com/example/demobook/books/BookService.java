@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class BookService {
@@ -47,5 +48,13 @@ public class BookService {
         if(author != null && author.length() > 0 && !Objects.equals(book.getAuthor(), author)){
             book.setAuthor(author);
         }
+    }
+
+    public Optional<Book> getABookId(int idBook) {
+        boolean exists = bookRepository.existsById(idBook);
+        if(!exists){
+            throw new IllegalStateException("Book with id " + idBook +" does not exist.");
+        }
+        return bookRepository.findById(idBook);
     }
 }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/v1/book")
@@ -19,6 +20,11 @@ public class BookController {
     @GetMapping
     public List<Book> getBook(){
         return bookService.getBook();
+    }
+
+    @GetMapping(path = "/{idBook}")
+    public Optional<Book> getABook(@PathVariable("idBook") int idBook){
+        return bookService.getABookId(idBook);
     }
 
     @PostMapping
