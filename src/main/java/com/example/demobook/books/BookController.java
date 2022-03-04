@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "api/v1/book")
+@RequestMapping(path = "/api/v1/book")
 public class BookController {
 
     private final BookService bookService;
@@ -25,6 +25,12 @@ public class BookController {
     @GetMapping(path = "/{idBook}")
     public Optional<Book> getABook(@PathVariable("idBook") int idBook){
         return bookService.getABookId(idBook);
+    }
+
+    @GetMapping(path = "/test")
+    public List<Book> getBookAuthorAndCategory(@RequestParam(required = false) String author,
+                                               @RequestParam(required = false) String category){
+        return bookService.getBookAuthor_Category(author, category);
     }
 
     @PostMapping

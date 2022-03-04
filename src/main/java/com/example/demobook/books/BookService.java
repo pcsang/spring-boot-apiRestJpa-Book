@@ -57,4 +57,8 @@ public class BookService {
         }
         return bookRepository.findById(idBook);
     }
+
+    public List<Book> getBookAuthor_Category(String author, String category) {
+        return bookRepository.findBookAuthorAndCategory(author, category);
+    }
 }
