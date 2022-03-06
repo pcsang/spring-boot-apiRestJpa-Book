@@ -25,6 +25,7 @@ class DemoBookApplicationTests {
 		book.setDesciption("sach hay");
 		book.setCreateDate(LocalDate.of(2010,05,12));
 		book.setUpdateDate(LocalDate.of(2015,01,16));
+		bookRepository.save(book);
 		Assert.assertNotNull(bookRepository.findById(1));
 	}
 

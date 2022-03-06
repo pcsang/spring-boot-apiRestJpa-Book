@@ -26,4 +26,16 @@ class BookRepositoryTest {
         List<Book> books = bookReposTest.findBookAuthorAndCategory("phamsang", "Khoahoc");
         assertThat(books).asList();
     }
+
+    @Test
+    void findBookAuthorAndCategoryNot() {
+        Book book =  new Book(2, "The war", "phamsang",
+                "Khoahoc", "quan su",
+                LocalDate.of(2010,05,12), LocalDate.of(2015,05,15));
+
+        bookReposTest.save(book);
+
+        List<Book> books = bookReposTest.findBookAuthorAndCategory("phamsang", "sangABc");
+        assertThat(books).isNotEqualTo(book);
+    }
 }
