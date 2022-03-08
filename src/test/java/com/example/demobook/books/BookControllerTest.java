@@ -25,9 +25,6 @@ public class BookControllerTest {
     @MockBean
     private BookService bookService;
 
-//    @Autowired
-//    private WebApplicationContext webApplicationContext;
-
     @Autowired
     private MockMvc mockMvc;
 

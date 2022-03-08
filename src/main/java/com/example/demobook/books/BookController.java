@@ -44,9 +44,9 @@ public class BookController {
     }
 
     @PutMapping(path = "{idBook}")
-    public void updateBook(@PathVariable("idBook") int idBook,
+    public Book updateBook(@PathVariable("idBook") int idBook,
                            @RequestParam(required = false) String name,
                            @RequestParam(required = false) String author){
-        bookService.updateBooks(idBook, name, author);
+        return bookService.updateBooks(idBook, name, author);
     }
 }

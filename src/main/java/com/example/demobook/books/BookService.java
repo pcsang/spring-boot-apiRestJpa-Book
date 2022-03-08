@@ -3,10 +3,7 @@ package com.example.demobook.books;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Access;
 import javax.transaction.Transactional;
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -38,7 +35,7 @@ public class BookService {
     }
 
     @Transactional
-    public void updateBooks(int idBook, String name, String author) {
+    public Book updateBooks(int idBook, String name, String author) {
         Book book = bookRepository.findById(idBook).
                 orElseThrow(()-> new IllegalStateException("Book with id " +idBook+ " does not exists"));
 
@@ -48,6 +45,8 @@ public class BookService {
         if(author != null && author.length() > 0 && !Objects.equals(book.getAuthor(), author)){
             book.setAuthor(author);
         }
+
+       return bookRepository.save(book);
     }
 
     public Optional<Book> getABookId(int idBook) {

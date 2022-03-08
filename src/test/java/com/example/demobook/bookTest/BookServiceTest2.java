@@ -19,7 +19,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class BookServiceTest {
+class BookServiceTest2 {
 
     @Mock
     private BookRepository bookRepository;
@@ -62,9 +62,9 @@ class BookServiceTest {
 
     @Test
     void deleteBookTest() {
-       given(bookRepository.existsById(1)).willReturn(true);
-       bookUnderService.deleteBook(1);
-       verify(bookRepository).deleteById(1);
+        given(bookRepository.existsById(1)).willReturn(true);
+        bookUnderService.deleteBook(1);
+        verify(bookRepository).deleteById(1);
     }
 
     @Test
@@ -93,7 +93,7 @@ class BookServiceTest {
     void getBookByAuthor_Category() {
         when(bookUnderService.getBookAuthor_Category("phamsang", "Khoahoc"))
                 .thenReturn((List.of( new Book(1, "The war", "phamsang",
-                "Khoahoc", "quan su", LocalDate.of(2010, 05, 12),
+                        "Khoahoc", "quan su", LocalDate.of(2010, 05, 12),
                         LocalDate.of(2015, 05, 15)))));
 
         assertThat(bookRepository.findBookAuthorAndCategory("phamsang", "Khoahoc"))
