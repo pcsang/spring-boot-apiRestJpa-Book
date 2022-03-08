@@ -35,7 +35,7 @@ class BookServiceTest2 {
 
     @Test
     void getBook() {
-        bookUnderService.getBook();
+        bookUnderService.getBooks();
         verify(bookRepository).findAll();
     }
 
@@ -74,9 +74,9 @@ class BookServiceTest2 {
                 LocalDate.of(2010, 05, 12),
                 LocalDate.of(2015, 05, 15));
         given(bookRepository.findById(1)).willReturn(Optional.of(book));
-        when(bookUnderService.updateBooks(1,"The war 2", "pham chi sang"))
+        when(bookUnderService.updateBook(1,"The war 2", "pham chi sang"))
                 .thenReturn(book);
-        assertThat(bookRepository.save(book)).isEqualTo(bookUnderService.updateBooks(1,"The war 2", "pham chi sang"));
+        assertThat(bookRepository.save(book)).isEqualTo(bookUnderService.updateBook(1,"The war 2", "pham chi sang"));
     }
 
     @Test

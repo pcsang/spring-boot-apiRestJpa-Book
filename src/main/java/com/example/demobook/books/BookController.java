@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/api/v1/book")
+@RequestMapping(path = "/api/v1/books")
 public class BookController {
 
     private final BookService bookService;
@@ -18,8 +18,8 @@ public class BookController {
     }
 
     @GetMapping
-    public List<Book> getBook(){
-        return bookService.getBook();
+    public List<Book> getBooks(){
+        return bookService.getBooks();
     }
 
     @GetMapping(path = "/{idBook}")
@@ -47,6 +47,7 @@ public class BookController {
     public Book updateBook(@PathVariable("idBook") int idBook,
                            @RequestParam(required = false) String name,
                            @RequestParam(required = false) String author){
-        return bookService.updateBooks(idBook, name, author);
+        return bookService.updateBook(idBook, name, author);
+
     }
 }

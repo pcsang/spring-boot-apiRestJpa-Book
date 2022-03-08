@@ -34,8 +34,8 @@ class BookServiceTest {
 
 
     @Test
-    void getBook() {
-        bookUnderService.getBook();
+    void getBooks() {
+        bookUnderService.getBooks();
         verify(bookRepository).findAll();
     }
 
@@ -68,15 +68,16 @@ class BookServiceTest {
     }
 
     @Test
-    void updateBooks() {
-        Book book = new Book(1, "The war 2", "pham chi sang",
+    void updateBook() {
+        //given
+        Book book =  new Book(1, "The war", "phamsang",
                 "Khoahoc", "quan su",
                 LocalDate.of(2010, 05, 12),
                 LocalDate.of(2015, 05, 15));
         given(bookRepository.findById(1)).willReturn(Optional.of(book));
-        when(bookUnderService.updateBooks(1,"The war 2", "pham chi sang"))
+        when(bookUnderService.updateBook(1,"The war 2", "pham chi sang"))
                 .thenReturn(book);
-        assertThat(bookRepository.save(book)).isEqualTo(bookUnderService.updateBooks(1,"The war 2", "pham chi sang"));
+        assertThat(bookRepository.save(book)).isEqualTo(bookUnderService.updateBook(1,"The war 2", "pham chi sang"));
     }
 
     @Test
@@ -99,4 +100,5 @@ class BookServiceTest {
         assertThat(bookRepository.findBookAuthorAndCategory("phamsang", "Khoahoc"))
                 .isEqualTo(bookUnderService.getBookAuthor_Category("phamsang", "Khoahoc"));
     }
+
 }

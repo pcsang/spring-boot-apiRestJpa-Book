@@ -18,7 +18,7 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    public List<Book> getBook(){
+    public List<Book> getBooks(){
         return bookRepository.findAll();
     }
 
@@ -35,7 +35,7 @@ public class BookService {
     }
 
     @Transactional
-    public Book updateBooks(int idBook, String name, String author) {
+    public Book updateBook(int idBook, String name, String author) {
         Book book = bookRepository.findById(idBook).
                 orElseThrow(()-> new IllegalStateException("Book with id " +idBook+ " does not exists"));
 
@@ -45,7 +45,6 @@ public class BookService {
         if(author != null && author.length() > 0 && !Objects.equals(book.getAuthor(), author)){
             book.setAuthor(author);
         }
-
        return bookRepository.save(book);
     }
 
