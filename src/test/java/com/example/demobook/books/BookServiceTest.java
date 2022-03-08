@@ -1,21 +1,14 @@
 package com.example.demobook.books;
 
-import org.apache.el.parser.AstSetData;
-import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.stubbing.OngoingStubbing;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,13 +35,12 @@ class BookServiceTest {
 
 
     @Test
-    void getBook() {
-        bookUnderService.getBook();
+    void getBooks() {
+        bookUnderService.getBooks();
         verify(bookRepository).findAll();
     }
 
     @Test
-    @Disabled
     void addNewBook() {
         Book book =  new Book(2, "The war", "phamsang",
                 "Khoahoc", "quan su",
@@ -62,7 +54,6 @@ class BookServiceTest {
     }
 
     @Test
-    @Disabled
     void deleteBook() {
         //given
         Book book =  new Book(1, "The war", "phamsang",
@@ -98,7 +89,7 @@ class BookServiceTest {
     }
 
     @Test
-    void updateBooks() {
+    void updateBook() {
         //given
         Book book =  new Book(1, "The war", "phamsang",
                 "Khoahoc", "quan su",
@@ -121,8 +112,4 @@ class BookServiceTest {
         assertThat(bookRepository.findById(1)).isEqualTo(bookUnderService.getABookId(1));
     }
 
-    @Test
-    void getBookAuthor_Category() {
-
-    }
 }

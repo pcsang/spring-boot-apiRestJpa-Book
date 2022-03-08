@@ -42,7 +42,7 @@ public class BookControllTest {
 //                "Khoahoc", "sach tre em",
 //                LocalDate.of(2010,05,12), LocalDate.of(2015,05,15)));
 
-        when(bookService.getBook()).thenReturn(books);
+        when(bookService.getBooks()).thenReturn(books);
         String url = "/api/v1/book";
         mockMvc.perform(MockMvcRequestBuilders.get(url))
                 .andExpect(jsonPath("$.id").value(2))
